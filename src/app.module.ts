@@ -12,7 +12,10 @@ import { ConfigModule } from '@nestjs/config';
     MongooseModule.forRoot(process.env.DATABASE_HOST, {
       connectionName: 'todo',
     }),
-    MongooseModule.forFeature([{ name: Todo.name, schema: TodoSchema }], 'todo'),
+    MongooseModule.forFeature(
+      [{ name: Todo.name, schema: TodoSchema }],
+      'todo',
+    ),
   ],
   controllers: [AppController],
   providers: [AppService],
