@@ -3,15 +3,21 @@ import { HydratedDocument } from 'mongoose';
 
 export type TodoDocument = HydratedDocument<Todo>;
 
+enum Status {
+  DONE = 'done',
+  AWAIT_EXECUTION = 'awaits execution',
+  IN_PROGRESS = 'in progress',
+}
+
 @Schema()
 export class Todo {
-  @Prop()
+  @Prop({ required: true })
   title: string;
 
-  @Prop()
+  @Prop({ required: true })
   text: string;
 
-  @Prop()
+  @Prop({ required: true, enum: Status })
   status: string;
 }
 
